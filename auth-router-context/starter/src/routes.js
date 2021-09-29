@@ -7,7 +7,11 @@ import Login from "./pages/Login";
 import Users from "./pages/Users";
 
 function CustomRoute({ isPrivate, ...rest }) {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, isLoading } = useContext(AuthContext);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
 
   if (isPrivate && !isAuthenticated) {
     return <Redirect to='/login' />

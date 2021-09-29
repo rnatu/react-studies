@@ -19,7 +19,7 @@ export function AuthProvider({ children }) {
       }
 
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
   }, []);
 
   async function handleLogin() {
@@ -31,9 +31,10 @@ export function AuthProvider({ children }) {
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
+    setIsAuthenticated(true);
+
     history.push("/users");
 
-    setIsAuthenticated(true);
   }
 
   function handleLogout() {
@@ -44,13 +45,9 @@ export function AuthProvider({ children }) {
     history.push("/login");
   }
 
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
-
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, handleLogin, handleLogout }}
+      value={{ isAuthenticated, handleLogin, handleLogout, isLoading }}
     >
       {children}
     </AuthContext.Provider>
