@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Switch, Route , Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthContext } from "./contexts/AuthContext";
 
@@ -14,7 +14,7 @@ function CustomRoute({ isPrivate, ...rest }) {
   }
 
   if (isPrivate && !isAuthenticated) {
-    return <Redirect to='/login' />
+    return <Redirect to="/login" />;
   }
 
   return <Route {...rest} />;

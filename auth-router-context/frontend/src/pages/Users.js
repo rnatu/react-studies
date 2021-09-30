@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 
 import api from "../api";
 
-import { AuthContext } from '../contexts/AuthContext'
+import { AuthContext } from "../contexts/AuthContext";
 
 export default function Users() {
-  const { handleLogout } = useContext(AuthContext)
+  const { handleLogout } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,9 @@ export default function Users() {
         ))}
       </ul>
 
-      <button type="button" onClick={handleLogout}>Sair</button>
+      <button type="button" onClick={handleLogout}>
+        Sair
+      </button>
     </>
   );
 }
