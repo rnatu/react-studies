@@ -5,6 +5,7 @@ export const useIsMounted = () => {
 
   useEffect(() => {
     setIsMounted(true);
+    console.log('useEffect do hook useIsMounted')
 
     return () => {
       setIsMounted(false);
