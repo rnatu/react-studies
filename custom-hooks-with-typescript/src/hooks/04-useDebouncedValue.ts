@@ -1,10 +1,28 @@
 import { useEffect, useState } from "react";
 
-export function useDebouncedValue(value: number | string, delay: number = 500) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
+type ResponseType = {
+  name: string;
+  id: number;
+}[];
+
+export function useDebouncedValue(value: string, delay: number = 500) {
+  const [debouncedValue, setDebouncedValue] = useState<ResponseType>([]);
 
   useEffect(() => {
-    const handler = setTimeout(() => setDebouncedValue(value), delay);
+    if (value === "") {
+      setDebouncedValue([]);
+      return;
+    }
+
+    const handler = setTimeout(async () => {
+      const data = await fetch(`http://localhost:3333/foods`);
+      const response: ResponseType = await data.json();
+
+      const results = response.filter((item) => {
+        return item.name.toLowerCase().includes(value.toLowerCase());
+      });
+      setDebouncedValue(results);
+    }, delay);
 
     return () => {
       clearTimeout(handler);

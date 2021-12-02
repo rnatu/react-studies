@@ -8,6 +8,7 @@ export const useIsMounted = () => {
     console.log('useEffect do hook useIsMounted')
 
     return () => {
+      console.log('componente desmontado')
       setIsMounted(false);
     };
   }, []);

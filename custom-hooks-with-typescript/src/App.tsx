@@ -9,21 +9,18 @@ function App() {
   const [count, setCount] = useNumber(1);
   const isMounted = useIsMounted();
   const [isActive, toggleIsActive] = useToggle(false);
-  const [search, setSearch] = useState("");
-
-  const debouncedValue = useDebouncedValue(search, 1000);
-
   console.log("toggle isActive " + isActive);
+  const [search, setSearch] = useState("");
+  const debouncedValue = useDebouncedValue(search, 600);
 
   useEffect(() => {
     if (isMounted) {
-      console.log("component montado");
+      console.log("useEffect do app.tsx component montado");
     }
   }, [isMounted]);
 
   return (
     <div className="App">
-      
       <button
         type="button"
         onClick={() => setCount((oldState) => oldState + 1)}
@@ -41,7 +38,13 @@ function App() {
       <input type="text" onChange={(e) => setSearch(e.target.value)} />{" "}
       <button>Buscar</button>
       <br />
-      <a href="/">{debouncedValue}</a>
+      <div>
+        {debouncedValue.map((item) => (
+          <p>
+            <a href="/" key={item.id}>{item.name}</a>
+          </p>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,52 @@
+{
+  "foods": [
+    {
+      "id": 1,
+      "name": "Ao molho",
+      "description": "Macarrão ao molho branco, fuji e cheiro verde das montanhas",
+      "price": "19.90",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png"
+    },
+    {
+      "id": 2,
+      "name": "Veggiee",
+      "description": "Macarrão e pimentão, ervilha e ervas finas colhidas no himalaia.",
+      "price": "50.90",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
+    },
+    {
+      "id": 3,
+      "name": "A la Camaróns",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "price": "50.99",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+    },
+    {
+      "id": 4,
+      "name": "hardrolls",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "price": "50.99",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+    },
+    {
+      "id": 5,
+      "name": "piemillet",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "price": "50.99",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+    },
+    {
+      "id": 6,
+      "name": "limepieroll de salsa",
+      "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
+      "price": "50.99",
+      "available": true,
+      "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+    }
+  ]
+}
