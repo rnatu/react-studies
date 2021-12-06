@@ -4,6 +4,7 @@ import { useNumber } from "./hooks/01-useNumber";
 import { useIsMounted } from "./hooks/02-useIsMounted";
 import { useToggle } from "./hooks/03-useToggle";
 import { useDebouncedValue } from "./hooks/04-useDebouncedValue";
+import { usePreviousValue } from "./hooks/05-usePreviousValue";
 
 function App() {
   const [count, setCount] = useNumber(1);
@@ -12,6 +13,7 @@ function App() {
   console.log("toggle isActive " + isActive);
   const [search, setSearch] = useState("");
   const debouncedValue = useDebouncedValue(search, 600);
+  const previousValue = usePreviousValue('Renato Xavier');
 
   useEffect(() => {
     if (isMounted) {
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* useNumber */}
       <button
         type="button"
         onClick={() => setCount((oldState) => oldState + 1)}
@@ -40,8 +43,8 @@ function App() {
       <br />
       <div>
         {debouncedValue.map((item) => (
-          <p>
-            <a href="/" key={item.id}>{item.name}</a>
+          <p key={item.id}>
+            <a href="/">{item.name}</a>
           </p>
         ))}
       </div>
