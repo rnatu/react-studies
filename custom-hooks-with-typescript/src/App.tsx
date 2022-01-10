@@ -13,7 +13,7 @@ function App() {
   console.log("toggle isActive " + isActive);
   const [search, setSearch] = useState("");
   const debouncedValue = useDebouncedValue(search, 600);
-  const previousValue = usePreviousValue('Renato Xavier');
+  const previousValue = usePreviousValue("Renato Xavier");
 
   useEffect(() => {
     if (isMounted) {
@@ -48,6 +48,12 @@ function App() {
           </p>
         ))}
       </div>
+      <br />
+      <br />
+      {/* usePreviousValue */}
+      <span>
+        PreviousValue is <strong>{previousValue}</strong>
+      </span>
     </div>
   );
 }
