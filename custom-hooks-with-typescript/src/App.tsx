@@ -5,6 +5,13 @@ import { useIsMounted } from "./hooks/02-useIsMounted";
 import { useToggle } from "./hooks/03-useToggle";
 import { useDebouncedValue } from "./hooks/04-useDebouncedValue";
 import { usePreviousValue } from "./hooks/05-usePreviousValue";
+import { useRecordState } from "./hooks/06-useRecordState";
+
+type Payload = {
+  name: string;
+  age?: number;
+  state: string;
+};
 
 function App() {
   const [count, setCount] = useNumber(1);
@@ -13,7 +20,13 @@ function App() {
   console.log("toggle isActive " + isActive);
   const [search, setSearch] = useState("");
   const debouncedValue = useDebouncedValue(search, 600);
-  const previousValue = usePreviousValue("Renato Xavier");
+  const previousValue = usePreviousValue(21);
+  const [payload, setPayload] = useRecordState<Payload>({
+    name: "",
+    age: undefined,
+    state: "",
+  });
+  console.log(payload);
 
   useEffect(() => {
     if (isMounted) {
@@ -51,9 +64,29 @@ function App() {
       <br />
       <br />
       {/* usePreviousValue */}
-      <span>
+      <p>
         PreviousValue is <strong>{previousValue}</strong>
-      </span>
+      </p>
+      {/* useRecordState */}
+      <button
+        type="button"
+        onClick={() => setPayload({ name: "levir", age: 22 })}
+      >
+        setPayload
+      </button>
+      <button
+        type="button"
+        onClick={() =>
+          setPayload((prevState) => ({
+            ...prevState,
+            name: "Renato",
+            age: 30,
+            state: prevState.name === "Levir" ? "Manaus" : "São Paulo",
+          }))
+        }
+      >
+        setPayload 2
+      </button>
     </div>
   );
 }
