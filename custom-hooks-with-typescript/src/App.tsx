@@ -7,6 +7,7 @@ import { useDebouncedValue } from "./hooks/04-useDebouncedValue";
 import { usePreviousValue } from "./hooks/05-usePreviousValue";
 import { useRecordState } from "./hooks/06-useRecordState";
 import { useAsyncEffect } from "./hooks/07-useAsyncEffect";
+import { useEventListener } from "./hooks/08-useEventListener";
 
 type Payload = {
   name: string;
@@ -22,7 +23,6 @@ function App() {
   const [search, setSearch] = useState("");
   const debouncedValue = useDebouncedValue(search, 600);
   const previousValue = usePreviousValue(21);
-
   const [payload, setPayload] = useRecordState<Payload>({
     name: "",
     age: undefined,
@@ -40,6 +40,13 @@ function App() {
     },
     []
   );
+  useEventListener("keydown", (e) => {
+    if(e.key === 'Enter') {
+      console.log('Enter was pressed');
+    }
+  }, {
+    target: window,
+  })
 
   useEffect(() => {
     if (isMounted) {
