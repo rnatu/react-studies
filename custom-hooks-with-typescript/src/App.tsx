@@ -6,6 +6,7 @@ import { useToggle } from "./hooks/03-useToggle";
 import { useDebouncedValue } from "./hooks/04-useDebouncedValue";
 import { usePreviousValue } from "./hooks/05-usePreviousValue";
 import { useRecordState } from "./hooks/06-useRecordState";
+import { useAsyncEffect } from "./hooks/07-useAsyncEffect";
 
 type Payload = {
   name: string;
@@ -27,6 +28,13 @@ function App() {
     state: "",
   });
   console.log(payload);
+  useAsyncEffect(async() => {
+    const codersClub = await new Promise((res) => res('codersClub'))
+
+    console.log(codersClub);
+  }, () => {
+    console.log('Desmontado')
+  }, [])
 
   useEffect(() => {
     if (isMounted) {
