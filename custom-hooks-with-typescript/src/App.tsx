@@ -22,19 +22,24 @@ function App() {
   const [search, setSearch] = useState("");
   const debouncedValue = useDebouncedValue(search, 600);
   const previousValue = usePreviousValue(21);
+
   const [payload, setPayload] = useRecordState<Payload>({
     name: "",
     age: undefined,
     state: "",
   });
   console.log(payload);
-  useAsyncEffect(async() => {
-    const codersClub = await new Promise((res) => res('codersClub'))
+  useAsyncEffect(
+    async () => {
+      const codersClub = await new Promise((res) => res("codersClub"));
 
-    console.log(codersClub);
-  }, () => {
-    console.log('Desmontado')
-  }, [])
+      console.log(codersClub);
+    },
+    () => {
+      console.log("Desmontado");
+    },
+    []
+  );
 
   useEffect(() => {
     if (isMounted) {

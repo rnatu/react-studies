@@ -1,5 +1,4 @@
-import { cleanup } from "@testing-library/react";
-import { EffectCallback, DependencyList, useEffect } from "react";
+import { EffectCallback, DependencyList, useEffect, useRef, useLayoutEffect } from "react";
 
 type Destructor = ReturnType<EffectCallback>;
 
@@ -21,16 +20,20 @@ export const useAsyncEffect: UseAsyncEffectHook = (
 ) => {
   const willDestroy = typeof destructor === "function";
 
-  const dependencyList = willDestroy ? deps : (destructor as DependencyList) //!
+  const dependencyList = willDestroy ? deps : (destructor as DependencyList); //!
+
+  const handler = useRef(effect);
+  useLayoutEffect(() => {
+    handler.current = effect;
+  })
 
   useEffect(() => {
-    effect()
+    handler.current();
 
     return () => {
-      if(willDestroy) {
+      if (willDestroy) {
         destructor();
       }
-    }
-  }, dependencyList)
-
+    };
+  }, [dependencyList, effect, willDestroy, destructor]);
 };
