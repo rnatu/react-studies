@@ -35,5 +35,6 @@ export const useAsyncEffect: UseAsyncEffectHook = (
         destructor();
       }
     };
-  }, [dependencyList, effect, willDestroy, destructor]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dependencyList]);
 };
