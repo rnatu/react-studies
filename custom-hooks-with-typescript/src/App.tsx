@@ -16,19 +16,32 @@ type Payload = {
 };
 
 function App() {
+  // 01 - useNumber
   const [count, setCount] = useNumber(1);
+
+  // 02 - useIsMounted
   const isMounted = useIsMounted();
+
+  // 03 - useToggle
   const [isActive, toggleIsActive] = useToggle(false);
   console.log("toggle isActive " + isActive);
+
+  // 04 - useDebouncedValue
   const [search, setSearch] = useState("");
   const debouncedValue = useDebouncedValue(search, 600);
+
+  // 05 - usePreviousValue
   const previousValue = usePreviousValue(21);
+
+  // 06 useRecordState
   const [payload, setPayload] = useRecordState<Payload>({
     name: "",
     age: undefined,
     state: "",
   });
   console.log(payload);
+
+  // 07 - useAsyncEffect
   useAsyncEffect(
     async () => {
       const codersClub = await new Promise((res) => res("codersClub"));
@@ -40,13 +53,19 @@ function App() {
     },
     []
   );
-  useEventListener("keydown", (e) => {
-    if(e.key === 'Enter') {
-      console.log('Enter was pressed');
+
+  // 08 - useEventListener
+  useEventListener(
+    "keydown",
+    (e) => {
+      if (e.key === "Enter") {
+        console.log("Enter was pressed");
+      }
+    },
+    {
+      target: window,
     }
-  }, {
-    target: window,
-  })
+  );
 
   useEffect(() => {
     if (isMounted) {

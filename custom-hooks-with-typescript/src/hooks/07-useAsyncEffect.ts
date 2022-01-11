@@ -1,4 +1,10 @@
-import { EffectCallback, DependencyList, useEffect, useRef, useLayoutEffect } from "react";
+import {
+  EffectCallback,
+  DependencyList,
+  useEffect,
+  useRef,
+  useLayoutEffect,
+} from "react";
 
 type Destructor = ReturnType<EffectCallback>;
 
@@ -20,12 +26,12 @@ export const useAsyncEffect: UseAsyncEffectHook = (
 ) => {
   const willDestroy = typeof destructor === "function";
 
-  const dependencyList = willDestroy ? deps : (destructor as DependencyList); //!
+  const dependencyList = willDestroy ? deps : (destructor as DependencyList);
 
   const handler = useRef(effect);
   useLayoutEffect(() => {
     handler.current = effect;
-  })
+  });
 
   useEffect(() => {
     handler.current();
@@ -35,6 +41,6 @@ export const useAsyncEffect: UseAsyncEffectHook = (
         destructor();
       }
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dependencyList]);
 };
