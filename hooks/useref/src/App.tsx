@@ -3,10 +3,7 @@ import { RendersCount } from "./components/RendersCount";
 
 
 function App() {
-  const [rendersCount, setRendersCount] = useState(0)
-
-
-
+ 
   const meuInput = useRef<HTMLInputElement>(null);
   const [state, setState] = useState(0);
   const refValue = useRef(0);
