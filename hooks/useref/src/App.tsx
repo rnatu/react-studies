@@ -21,6 +21,17 @@ function App() {
         Update state to render
       </button>
 
+      <p>Ref value: {refValue.current}</p>
+      <button
+        onClick={() => {
+          refValue.current += 1;
+          console.log(refValue.current);
+        }}
+      >
+        Update ref value
+      </button> <span><em>console.log for more</em></span>
+      
+
       <p>Input</p>
       <input type="text" ref={meuInput} />
       <button
@@ -30,9 +41,6 @@ function App() {
       >
         Submit to console.log using useRef
       </button>
-
-      <p>Ref value: {refValue.current}</p>
-      <button onClick={() => (refValue.current += 1)}>Update ref value</button>
 
       <br />
 
