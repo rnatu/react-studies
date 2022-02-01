@@ -16,11 +16,9 @@ function App() {
     <div className="App">
       <RendersCount />
       <p>State value: {String(state)}</p>
-
       <button onClick={() => setState((oldState) => (oldState += 1))}>
         Update state to render
       </button>
-
       <p>Ref value: {refValue.current}</p>
       <button
         onClick={() => {
@@ -29,9 +27,10 @@ function App() {
         }}
       >
         Update ref value
-      </button> <span><em>console.log for more</em></span>
-      
-
+      </button>{" "}
+      <span>
+        <em>console.log for more</em>
+      </span>
       <p>Input</p>
       <input type="text" ref={meuInput} />
       <button
@@ -41,9 +40,7 @@ function App() {
       >
         Submit to console.log using useRef
       </button>
-
       <br />
-
       <p>Triggering another button using useRef</p>
       <button onClick={() => alert("Este é um alerta")} ref={buttonAlertRef}>
         Alert
