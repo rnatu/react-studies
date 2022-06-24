@@ -6,10 +6,10 @@ body {
   color: #e1e1e1;
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .container {
+  margin-top: 28px;
   max-width: 1200px;
   width: 100%;
   display: flex;
@@ -26,6 +26,11 @@ body {
 .container .logo img {
   width: 180px;
   height: 180px;
+  transition: transform ease-in-out 0.3s;
+}
+
+.container .logo img:hover {
+  transform: scale(1.1);
 }
 
 .container .fileSection {
